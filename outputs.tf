@@ -4,7 +4,7 @@ output "config_configuration_aggregators_id" {
 }
 output "config_configuration_aggregators_account_aggregation_source" {
   description = "Map of account_aggregation_source values across all config_configuration_aggregators, keyed the same as var.config_configuration_aggregators"
-  value       = { for k, v in aws_config_configuration_aggregator.config_configuration_aggregators : k => v.account_aggregation_source if v.account_aggregation_source != null && length(v.account_aggregation_source) > 0 }
+  value       = { for k, v in aws_config_configuration_aggregator.config_configuration_aggregators : k => one(v.account_aggregation_source) if v.account_aggregation_source != null && length(v.account_aggregation_source) > 0 }
 }
 output "config_configuration_aggregators_arn" {
   description = "Map of arn values across all config_configuration_aggregators, keyed the same as var.config_configuration_aggregators"
@@ -16,7 +16,7 @@ output "config_configuration_aggregators_name" {
 }
 output "config_configuration_aggregators_organization_aggregation_source" {
   description = "Map of organization_aggregation_source values across all config_configuration_aggregators, keyed the same as var.config_configuration_aggregators"
-  value       = { for k, v in aws_config_configuration_aggregator.config_configuration_aggregators : k => v.organization_aggregation_source if v.organization_aggregation_source != null && length(v.organization_aggregation_source) > 0 }
+  value       = { for k, v in aws_config_configuration_aggregator.config_configuration_aggregators : k => one(v.organization_aggregation_source) if v.organization_aggregation_source != null && length(v.organization_aggregation_source) > 0 }
 }
 output "config_configuration_aggregators_region" {
   description = "Map of region values across all config_configuration_aggregators, keyed the same as var.config_configuration_aggregators"
